@@ -1,0 +1,8 @@
+.profile {
+  padding-top: 42px;
+  box-sizing: border-box;
+  width: 282px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
