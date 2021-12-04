@@ -1,0 +1,10 @@
+.place__button {
+  width: 22px;
+  height: 19px;
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}

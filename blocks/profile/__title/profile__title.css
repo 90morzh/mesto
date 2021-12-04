@@ -1,0 +1,10 @@
+.profile__title {
+  margin: 0;
+  max-width: calc(100% - 28px);
+  color: #ffffff;
+  font-size: 27px;
+  line-height: 33px;
+  font-style: normal;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
