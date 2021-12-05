@@ -1,4 +1,12 @@
 .profile__pencil-img {
   width: 8px;
   height: 8px;
+  transition: opacity 0.2s linear;
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__pencil-img {
+    width: 10px;
+    height: 10px;
+  }
 }

@@ -1,0 +1,12 @@
+.place__heart {
+  transition: opacity 0.2s linear;
+}
+
+.place__heart:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.place__heart:active {
+  color: #000000;
+}

@@ -7,4 +7,24 @@
   line-height: 17px;
   font-weight: normal;
   font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  
+}
+
+@media screen and (min-width: 768px) {
+  .profile__subtitle {
+    text-align: left;
+    padding: 14px 0 0;
+    max-width: 580px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__subtitle {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 16px 0 0;
+  }
 }
