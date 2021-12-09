@@ -3,6 +3,7 @@
   height: 50px;
   border: 2px solid #ffffff;
   background-color: #000000;
+  border-radius: 2px;
   padding: 0;
   display: flex;
   justify-content: center;

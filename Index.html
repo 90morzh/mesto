@@ -15,7 +15,7 @@
     <main class="content">
       <section class="profile">
         <div class="profile__avatar-container">
-          <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар с изображением Жак-Ива Кусто">
+          <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар с изображением">
         </div>
         <div class="profile__info">
           <div class="profile__title-container">
@@ -32,7 +32,7 @@
       </section>
 
       <section class="places">
-        <div class="place">
+        <article class="place">
           <img class="place__img" src="./images/karachaevsk.jpg" alt="Фотогорафия города Карачаевск">
           <div class="place__title-container">
             <h2 class="place__title">Карачаевск</h2>
@@ -40,8 +40,8 @@
               <img class="place__heart" src="./images/heart.svg" alt="Изображение сердца">
             </button>
           </div>
-        </div>
-        <div class="place">
+        </article>
+        <article class="place">
           <img class="place__img" src="./images/elbrus.jpg" alt="Фотогорафия горы Эльбрус">
           <div class="place__title-container">
             <h2 class="place__title">Гора Эльбрус</h2>
@@ -49,8 +49,8 @@
               <img class="place__heart" src="./images/heart.svg" alt="Изображение сердца">
             </button>
           </div>
-        </div>
-        <div class="place">
+        </article>
+        <article class="place">
           <img class="place__img" src="./images/dombay.jpg" alt="Фотогорафия Домбая">
           <div class="place__title-container">
             <h2 class="place__title">Домбай</h2>
@@ -58,8 +58,8 @@
               <img class="place__heart" src="./images/heart.svg" alt="Изображение сердца">
             </button>
           </div>
-        </div>
-        <div class="place">
+        </article>
+        <article class="place">
           <img class="place__img" src="./images/moscow.jpg" alt="Фотогорафия города Москва">
           <div class="place__title-container">
             <h2 class="place__title">Москва</h2>
@@ -67,8 +67,8 @@
               <img class="place__heart" src="./images/heart.svg" alt="Изображение сердца">
             </button>
           </div>
-        </div>
-        <div class="place">
+        </article>
+        <article class="place">
           <img class="place__img" src="./images/kazan.jpg" alt="Фотогорафия города Казань">
           <div class="place__title-container">
             <h2 class="place__title">Казань</h2>
@@ -76,8 +76,8 @@
               <img class="place__heart" src="./images/heart.svg" alt="Изображение сердца">
             </button>
           </div>
-        </div>
-        <div class="place">
+        </article>
+        <article class="place">
           <img class="place__img" src="./images/vladivostok.jpg" alt="Фотогорафия города Владивосток">
           <div class="place__title-container">
             <h2 class="place__title">Владивосток</h2>
@@ -85,7 +85,7 @@
               <img class="place__heart" src="./images/heart.svg" alt="Изображение сердца">
             </button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
 
@@ -93,17 +93,17 @@
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <div class="popup">
       <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
+        <form class="popup__form" name="popupForm">
           <input class="popup__input" type="text" name="author" id="author-input" required>
           <input class="popup__input" type="text" name="about" id="about-input" required>
           <button class="popup__button" type="submit">Сохранить</button>
         </form>
       </div>
-    </section>
+    </div>
   </div>
 
   <script src="./scripts/script.js"></script>
