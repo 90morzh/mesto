@@ -12,3 +12,7 @@
 * Flexbox
 * Grid
 * Javascript
+
+**Ссылка на gh-pages**
+
+https://90morzh.github.io/mesto/Index.html
