@@ -9,6 +9,7 @@
   padding: 25px 22px;
   box-sizing: border-box;
   position: relative;
+  font-size: 0;
 }
 
 @media screen and (min-width: 768px) {

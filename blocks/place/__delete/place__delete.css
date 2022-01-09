@@ -1,8 +1,8 @@
-.place__heart {
+.place__delete {
   transition: opacity 0.2s linear;
 }
 
-.place__heart:hover {
+.place__delete:hover {
   cursor: pointer;
   opacity: 0.5;
 }

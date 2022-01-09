@@ -1,0 +1,13 @@
+.place__delete-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 22px;
+  height: 19px;
+  background-color: inherit;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
