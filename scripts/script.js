@@ -1,6 +1,5 @@
 const editButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
-const closeButton = document.querySelector('.popup__close-button');
 
 const profileEditPopup = document.querySelector('.popup_profile-edit');
 const addCardPopup = document.querySelector('.popup_add-card');
@@ -66,16 +65,11 @@ function closePopup(popup) {
 
 // Открытие попапа
 function openPopup(popup) {
-  if (popup === profileEditPopup) {
-    authorInput.value = author.textContent;
-    aboutInput.value = about.textContent;
-  }
-
   popup.classList.add('popup_active');
 }
 
 // Обработчик редактирования профиля
-function profileFormSubmitHandler(evt) {
+function editProfile(evt) {
   evt.preventDefault();
 
   author.textContent = authorInput.value;
@@ -85,7 +79,7 @@ function profileFormSubmitHandler(evt) {
 }
 
 // Обработчик добавления новой карточки
-function cardFormSubmitHandler(evt) {
+function addNewCard(evt) {
   evt.preventDefault();
 
   const cardObject = {
@@ -95,6 +89,8 @@ function cardFormSubmitHandler(evt) {
   const newCard = createCard(cardObject);
 
   cardContainer.prepend(newCard);
+  placeInput.value = '';
+  linkInput.value = '';
   closePopup(addCardPopup);
 }
 
@@ -122,11 +118,10 @@ function createCard(place) {
 function openPicturePopup(evt) {
   const url = evt.target.getAttribute('src');
   const alt = evt.target.getAttribute('alt');
-  const place = evt.target.closest('.place').querySelector('.place__title').textContent;
 
   popupImg.setAttribute('src', url);
   popupImg.setAttribute('alt', alt);
-  popupSubtitle.textContent = place;
+  popupSubtitle.textContent = alt;
 
   openPopup(picturePopup);
 }
@@ -141,8 +136,13 @@ function likeHandler(evt) {
   evt.target.classList.toggle('place__heart_active');
 }
 
-editButton.addEventListener('click', () => openPopup(profileEditPopup));
+editButton.addEventListener('click', () => {
+  authorInput.value = author.textContent;
+  aboutInput.value = about.textContent;
+
+  openPopup(profileEditPopup)
+});
 addCardButton.addEventListener('click', () => openPopup(addCardPopup));
 
-profileEditPopup.addEventListener('submit', profileFormSubmitHandler);
-addCardPopup.addEventListener('submit', cardFormSubmitHandler);
+profileEditPopup.addEventListener('submit', editProfile);
+addCardPopup.addEventListener('submit', addNewCard);
