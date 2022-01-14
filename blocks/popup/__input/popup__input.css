@@ -9,10 +9,5 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  margin-bottom: 30px;
   -webkit-font-smoothing: antialiased;
-}
-
-.popup__input:nth-child(2){
-  margin-bottom: 0;
 }

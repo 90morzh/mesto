@@ -1,0 +1,8 @@
+.popup__field {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.popup__field:nth-child(2){
+  margin-bottom: 0;
+}

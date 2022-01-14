@@ -52,20 +52,28 @@ initialCards.forEach(place => {
 
 popups.forEach (popup => {
   popup.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup__close-button')) {
+    if (evt.target.classList.contains('popup_active') || evt.target.classList.contains('popup__close-button')) {
       closePopup(popup);
     }
   })
 })
 
+function closePopupByEsc (evt) {
+  if (evt.code === 'Escape') {
+    closePopup(document.querySelector('.popup_active'));
+  }
+}
+
 // Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_active');
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 // Открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_active');
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 // Обработчик редактирования профиля
