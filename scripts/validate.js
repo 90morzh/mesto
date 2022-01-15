@@ -23,8 +23,10 @@ const enableValidation = (settingsObj) => {
 const toggleSubmitButtonState = (inputList, submitButton, inactiveButtonClass) => {
   if (hasInvalidInput(inputList)) {
     submitButton.classList.add(inactiveButtonClass);
+    submitButton.setAttribute('disabled', true)
   } else {
     submitButton.classList.remove(inactiveButtonClass);
+    submitButton.removeAttribute('disabled');
   }
 };
 

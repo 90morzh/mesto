@@ -1,5 +1,6 @@
 const editButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
+const popupButton = document.querySelector('.popup__button');
 
 const profileEditPopup = document.querySelector('.popup_profile-edit');
 const addCardPopup = document.querySelector('.popup_add-card');
@@ -64,6 +65,16 @@ function closePopupByEsc (evt) {
   }
 }
 
+function clearPlaceInputs() {
+  placeInput.value = '';
+  linkInput.value = '';
+}
+
+function disablePopupButton() {
+  popupButton.setAttribute('disabled', true);
+  popupButton.classList.add('popup__button_disabled');
+}
+
 // Закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_active');
@@ -74,6 +85,12 @@ function closePopup(popup) {
 function openPopup(popup) {
   popup.classList.add('popup_active');
   document.addEventListener('keydown', closePopupByEsc);
+
+  if (popup.classList.contains('popup_add-card')) {
+    clearPlaceInputs();
+  }
+
+  disablePopupButton();
 }
 
 // Обработчик редактирования профиля
@@ -97,8 +114,6 @@ function addNewCard(evt) {
   const newCard = createCard(cardObject);
 
   cardContainer.prepend(newCard);
-  placeInput.value = '';
-  linkInput.value = '';
   closePopup(addCardPopup);
 }
 
