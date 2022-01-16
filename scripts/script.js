@@ -1,9 +1,9 @@
 const editButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
-const popupButton = document.querySelector('.popup__button');
 
 const profileEditPopup = document.querySelector('.popup_profile-edit');
 const addCardPopup = document.querySelector('.popup_add-card');
+const popupAddCardButton = addCardPopup.querySelector('.popup__button');
 const picturePopup = document.querySelector('.popup_picture');
 const popups = document.querySelectorAll('.popup');
 
@@ -68,11 +68,8 @@ function closePopupByEsc (evt) {
 function clearPlaceInputs() {
   placeInput.value = '';
   linkInput.value = '';
-}
 
-function disablePopupButton() {
-  popupButton.setAttribute('disabled', true);
-  popupButton.classList.add('popup__button_disabled');
+  openPopup(addCardPopup);
 }
 
 // Закрытие попапа
@@ -85,12 +82,6 @@ function closePopup(popup) {
 function openPopup(popup) {
   popup.classList.add('popup_active');
   document.addEventListener('keydown', closePopupByEsc);
-
-  if (popup.classList.contains('popup_add-card')) {
-    clearPlaceInputs();
-  }
-
-  disablePopupButton();
 }
 
 // Обработчик редактирования профиля
@@ -115,6 +106,7 @@ function addNewCard(evt) {
 
   cardContainer.prepend(newCard);
   closePopup(addCardPopup);
+  disableSubmitButton(popupAddCardButton, popupConfig.inactiveButtonClass);
 }
 
 // Создание карточки
@@ -165,7 +157,7 @@ editButton.addEventListener('click', () => {
 
   openPopup(profileEditPopup)
 });
-addCardButton.addEventListener('click', () => openPopup(addCardPopup));
+addCardButton.addEventListener('click', () => clearPlaceInputs());
 
 profileEditPopup.addEventListener('submit', editProfile);
 addCardPopup.addEventListener('submit', addNewCard);
