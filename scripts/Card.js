@@ -1,10 +1,9 @@
-import {openPicturePopup, removeCard, handleLike} from '../pages/index.js';
-
 export class Card {
-    constructor(data, templateSelector) {
+    constructor(data, templateSelector, openPicturePopup) {
       this._templateSelector = templateSelector;
       this._name = data.name;
       this._link = data.link;
+      this._openPicturePopup = openPicturePopup;
     };
 
     _getTemplate() {
@@ -18,15 +17,26 @@ export class Card {
     }
 
     _setEventListeners() {
-      this._photo.addEventListener('click', (evt) => {
-        openPicturePopup(evt);
+      this._photo.addEventListener('click', () => {
+        this._openPicturePopup(this._name, this._link);
       });
-      this._deleteButton.addEventListener('click', (evt) => {
-        removeCard(evt);
+      this._deleteButton.addEventListener('click', () => {
+        this._removeCard();
       });
-      this._likeButton.addEventListener('click', (evt) => {
-        handleLike(evt);
+      this._likeButton.addEventListener('click', () => {
+        this._handleLike();
       });
+    }
+
+    _removeCard() {
+      this._element.remove();
+    }
+
+    _handleLike() {
+      this._element
+      .querySelector('.place__heart')
+      .classList
+      .toggle('place__heart_active');
     }
 
     createNewCard() {

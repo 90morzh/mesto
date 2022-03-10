@@ -60,8 +60,7 @@ editForm.enableValidation();
 addForm.enableValidation();
 
 initialCards.forEach(place => {
-  const card = new Card(place, '#place');
-  const cardElement = card.createNewCard();
+  const cardElement =  createCard(place);
 
   cardContainer.append(cardElement);
 });
@@ -80,9 +79,8 @@ function closePopupByEsc (evt) {
   }
 }
 
-function clearPlaceInputs() {
-  placeInput.value = '';
-  linkInput.value = '';
+function openCardPopup() {
+  document.querySelector('#addForm').reset();
 
   openPopup(addCardPopup);
 }
@@ -117,28 +115,27 @@ function addNewCard(evt) {
     name: placeInput.value,
     link: linkInput.value
   };
-  const newCard = new Card(cardObject, '#place');
+  const cardElement = createCard(cardObject);
 
-  cardContainer.prepend(newCard.createNewCard());
+  cardContainer.prepend(cardElement);
   closePopup(addCardPopup);
   addForm.disableSubmitButton();
 }
 
 // Открытие попапа с изображением
-export function openPicturePopup(evt) {
-  const url = evt.target.getAttribute('src');
-  const alt = evt.target.getAttribute('alt');
-
-  popupImg.setAttribute('src', url);
-  popupImg.setAttribute('alt', alt);
-  popupSubtitle.textContent = alt;
+function openPicturePopup(name, link) {
+  popupImg.setAttribute('src', link);
+  popupImg.setAttribute('alt', name);
+  popupSubtitle.textContent = name;
 
   openPopup(picturePopup);
 }
 
-// Удаление карточки
-export function removeCard(evt) {
-  evt.target.closest('.place').remove();
+function createCard(place) {
+  const card = new Card(place, '#place', openPicturePopup);
+  const cardElement = card.createNewCard();
+
+  return cardElement;
 }
 
 // Обработчик лайка
@@ -152,7 +149,7 @@ editButton.addEventListener('click', () => {
 
   openPopup(profileEditPopup)
 });
-addCardButton.addEventListener('click', () => clearPlaceInputs());
+addCardButton.addEventListener('click', () => openCardPopup());
 
 profileEditPopup.addEventListener('submit', editProfile);
 addCardPopup.addEventListener('submit', addNewCard);
