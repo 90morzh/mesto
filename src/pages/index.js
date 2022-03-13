@@ -4,6 +4,8 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
+import {initialCards, popupConfig} from '../utils/constants.js'
+
 import './index.css';
 
 const editButton = document.querySelector('.profile__edit-button');
@@ -16,41 +18,6 @@ const authorInput = profileEditPopup.querySelector('#author-input');
 const aboutInput = profileEditPopup.querySelector('#about-input');
 const placeInput = addCardPopup.querySelector('#place-input');
 const linkInput = addCardPopup.querySelector('#link-input');
-
-const initialCards = [
-  {
-    name: 'Карачаевск',
-    link: './images/karachaevsk.jpg'
-  },
-  {
-    name: 'Гора Эльбрус',
-    link: './images/elbrus.jpg'
-  },
-  {
-    name: 'Домбай',
-    link: './images/dombay.jpg'
-  },
-  {
-    name: 'Москва',
-    link: './images/moscow.jpg'
-  },
-  {
-    name: 'Казань',
-    link: './images/kazan.jpg'
-  },
-  {
-    name: 'Владивосток',
-    link: './images/vladivostok.jpg'
-  }
-];
-
-const popupConfig = {
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
 
 // Валидация для формы редактирования профиля
 const editForm = new FormValidator(popupConfig, '#editForm');
