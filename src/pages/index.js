@@ -51,18 +51,15 @@ popupAddCard.setEventListeners();
 const userInfo = new UserInfo({authorSelector: '.profile__title', aboutSelector: '.profile__subtitle'});
 
 // Обработчик редактирования профиля
-function editProfile() {
-  userInfo.setUserInfo({author: authorInput.value, about: aboutInput.value});
+function editProfile({author, about}) {
+  userInfo.setUserInfo({author, about});
 
   popupEditProfile.close();
 }
 
 // Обработчик добавления новой карточки
-function addNewCard() {
-  const cardObject = {
-    name: placeInput.value,
-    link: linkInput.value
-  };
+function addNewCard({place, link}) {
+  const cardObject = {place, link};
   const cardElement = createCard(cardObject);
 
   cardsContainer.addItem(cardElement, false);
@@ -71,8 +68,8 @@ function addNewCard() {
 }
 
 // Открытие попапа с изображением
-function openPicturePopup(name, link) {
-  popupWithImage.open({name, link});
+function openPicturePopup(place, link) {
+  popupWithImage.open({place, link});
 }
 
 function createCard(place) {

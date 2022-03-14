@@ -7,27 +7,27 @@ import sixthCard from '../images/vladivostok.jpg';
 
 export const initialCards = [
   {
-    name: 'Карачаевск',
+    place: 'Карачаевск',
     link: firstCard
   },
   {
-    name: 'Гора Эльбрус',
+    place: 'Гора Эльбрус',
     link: secondCard
   },
   {
-    name: 'Домбай',
+    place: 'Домбай',
     link: thirdCard
   },
   {
-    name: 'Москва',
+    place: 'Москва',
     link: fourthCard
   },
   {
-    name: 'Казань',
+    place: 'Казань',
     link: fifthCard
   },
   {
-    name: 'Владивосток',
+    place: 'Владивосток',
     link: sixthCard
   }
 ];
