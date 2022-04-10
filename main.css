@@ -51,6 +51,6 @@
 .popup__form_confirm{margin:0}
 .popup__button_confirm{margin-top:38px}
 .place__button_hidden{display:none}
-.popup__field_avatar{margin-bottom:0}
+.popup__field_avatar{margin-bottom:0;position:relative}
 .popup__button-avatar{margin-top:38px}
 
