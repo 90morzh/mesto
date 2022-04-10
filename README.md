@@ -15,4 +15,4 @@
 
 **Ссылка на gh-pages**
 
-https://90morzh.github.io/mesto/Index.html
+https://90morzh.github.io/mesto/index.html
