@@ -39,3 +39,11 @@ export const popupConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
+
+export const apiOptions = {
+  url: 'https://nomoreparties.co/v1/cohort-38/',
+  headers: {
+    authorization: '7846b4cc-9829-41ef-9b1b-ef32e4f41471',
+    'Content-Type': 'application/json'
+  }
+};
