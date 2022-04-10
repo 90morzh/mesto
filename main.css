@@ -43,6 +43,7 @@
 .popup_active{opacity:1;visibility:visible}
 .popup__img{max-height:75vh;max-width:75vw}
 .popup__field{margin-bottom:30px;position:relative}.popup__field:nth-child(2){margin-bottom:0}
+.popup__field-avatar{margin-bottom:0;position:relative}
 .popup__error{color:red;font-size:12px;font-weight:400;left:0;line-height:15px;opacity:0;position:absolute;top:calc(100% + 5px);transition:opacity .3s ease;z-index:1}
 .place__heart_active{background-image:url(35948469632d0421d697.svg)}
 .popup__button_disabled{background-color:unset;border:1px solid #000;color:#000;opacity:.2}.popup__button_disabled:hover{cursor:default;opacity:.2}
@@ -51,6 +52,5 @@
 .popup__form_confirm{margin:0}
 .popup__button_confirm{margin-top:38px}
 .place__button_hidden{display:none}
-.popup__field_avatar{margin-bottom:0;position:relative}
 .popup__button-avatar{margin-top:38px}
 
