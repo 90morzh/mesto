@@ -22,8 +22,9 @@ export default class PopupWithConfirm extends Popup {
   }
 
   open({id, element}) {
-    super.open();
     this.id = id;
     this.element = element;
+    
+    super.open();
   }
 };

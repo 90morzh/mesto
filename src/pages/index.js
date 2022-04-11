@@ -68,6 +68,8 @@ const userInfo = new UserInfo({
 
 // Обработчик редактирования профиля
 function editProfile({author, about}) {
+  popupEditProfile.changeButtonText('Сохранение...');
+
   api.setUserData({name: author, about})
     .then((res) => {
       userInfo.setUserInfo({author: res.name, about: res.about});
@@ -78,15 +80,17 @@ function editProfile({author, about}) {
       console.log(err);
     })
     .finally(() => {
-      popupEditProfile.changeButtonText('Сохранение...');
+      popupEditProfile.changeButtonText('Сохранить');
     });
 }
 
 // Обработчик добавления новой карточки
 function addNewCard({place, link}) {
+  popupAddCard.changeButtonText('Сохранение...');
+
   api.addCard({name: place, link})
     .then((res) => {
-      const cardObject = {name: res.name, link: res.link};
+      const cardObject = {name: res.name, link: res.link, _id: res._id};
       createCard(cardObject);
 
       popupAddCard.close();
@@ -96,7 +100,7 @@ function addNewCard({place, link}) {
       console.log(err);
     })
     .finally(() => {
-      popupAddCard.changeButtonText('Сохранение...');
+      popupAddCard.changeButtonText('Создать');
     });
 }
 
@@ -114,6 +118,8 @@ function removeCard({id, element}) {
 
 // Обработчик изменения аватарки
 function changeAvatar({link}) {
+  avatarPopup.changeButtonText('Сохранение...');
+
   api.setUserAvatar(link)
   .then((res) => {
     userInfo.setUserAvatar({avatar: res.avatar});
@@ -124,7 +130,7 @@ function changeAvatar({link}) {
     console.log(err);
   })
   .finally(() => {
-    avatarPopup.changeButtonText('Сохранение...');
+    avatarPopup.changeButtonText('Сохранить');
   });
 }
 

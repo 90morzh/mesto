@@ -7,7 +7,7 @@ export default class Api {
     this._headers = headers;
   }
 
-  _responseStatus(res) {
+  _checkResponse(res) {
     return res.ok ? res.json() : Promise.reject(`Код ошибки: ${res.status}`);
   }
 
@@ -15,16 +15,14 @@ export default class Api {
     return fetch(this._userUrl, {
       headers: this._headers
     })
-      .then((res) => this._responseStatus(res))
-      .catch((err) => Promise.reject(err));
+      .then((res) => this._checkResponse(res));
   }
 
   getCards() {
     return fetch(this._cardsUrl, {
       headers: this._headers
     })
-      .then((res) => this._responseStatus(res))
-      .catch((err) => Promise.reject(err));
+      .then((res) => this._checkResponse(res));
   }
 
   setUserData({name, about}) {
@@ -36,8 +34,7 @@ export default class Api {
         about
       })
     })
-      .then((res) => this._responseStatus(res))
-      .catch((err) => Promise.reject(err));
+      .then((res) => this._checkResponse(res));
   }
 
   addCard({name, link}) {
@@ -49,8 +46,7 @@ export default class Api {
         link
       })
     })
-      .then((res) => this._responseStatus(res))
-      .catch((err) => Promise.reject(err));
+      .then((res) => this._checkResponse(res));
   }
 
   removeCard(id) {
@@ -58,8 +54,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => this._responseStatus(res))
-    .catch((err) => Promise.reject(err));
+    .then(res => this._checkResponse(res));
   }
 
   putLike(id) {
@@ -67,8 +62,7 @@ export default class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(res => this._responseStatus(res))
-    .catch((err) => Promise.reject(err));
+    .then(res => this._checkResponse(res));
   }
 
   removeLike(id) {
@@ -76,8 +70,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => this._responseStatus(res))
-    .catch((err) => Promise.reject(err));
+    .then(res => this._checkResponse(res));
   }
 
   setUserAvatar(url) {
@@ -88,7 +81,6 @@ export default class Api {
         avatar: url
       })
     })
-    .then(res => this._responseStatus(res))
-    .catch((err) => Promise.reject(err));
+    .then(res => this._checkResponse(res));
   }
 };
