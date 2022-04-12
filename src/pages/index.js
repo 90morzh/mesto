@@ -66,6 +66,14 @@ const userInfo = new UserInfo({
   profileAvatar: '.profile__avatar'
 });
 
+const cardsContainer = new Section({
+  renderer: (place) => {
+    const cardElement = createCard(place, userInfo.id);
+
+    cardsContainer.addItem(cardElement, true);
+  }
+}, '.places');
+
 // Обработчик редактирования профиля
 function editProfile({author, about}) {
   popupEditProfile.changeButtonText('Сохранение...');
@@ -91,10 +99,10 @@ function addNewCard({place, link}) {
   api.addCard({name: place, link})
     .then((res) => {
       const cardObject = {name: res.name, link: res.link, _id: res._id};
-      createCard(cardObject);
+
+      cardsContainer.addItem(createCard(cardObject), false)
 
       popupAddCard.close();
-      addForm.disableSubmitButton();
     })
     .catch((err) => {
       console.log(err);
@@ -143,18 +151,20 @@ function createCard(place, userId) {
   const card = new Card(place, '#place', openPicturePopup, popupConfirm, userId, api);
   const cardElement = card.createNewCard();
 
-  card.showCard('.places', cardElement);
-
   return cardElement;
 }
 
 editButton.addEventListener('click', () => {
-  authorInput.value = userInfo.getUserInfo().author;
-  aboutInput.value = userInfo.getUserInfo().about;
+  const userData = userInfo.getUserInfo();
 
+  authorInput.value = userData.author;
+  aboutInput.value = userData.about;
+
+  editForm.disableSubmitButton();
   popupEditProfile.open();
 });
 addCardButton.addEventListener('click', () => {
+  addForm.disableSubmitButton();
   popupAddCard.open();
 });
 
@@ -165,21 +175,13 @@ Promise.all([
   .then(([userData, cardsData]) => {
     userInfo.setUserInfo({
       author: userData.name,
-      about: userData.about
+      about: userData.about,
+      id: userData._id
     });
 
     userInfo.setUserAvatar({avatar: userData.avatar});
 
-    const cardsContainer = new Section({
-      items: cardsData,
-      renderer: (place) => {
-        const cardElement = createCard(place, userData._id);
-    
-        cardsContainer.addItem(cardElement, true);
-      }
-    }, '.places');
-
-    cardsContainer.renderItems();
+    cardsContainer.renderItems(cardsData);
   })
   .catch((err) => {
     console.log(err);

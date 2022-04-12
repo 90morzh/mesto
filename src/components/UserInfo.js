@@ -12,9 +12,10 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo({author, about}) {
+  setUserInfo({author, about, id}) {
     this._author.textContent = author;
     this._about.textContent = about;
+    this.id = id;
   }
 
   setUserAvatar({avatar}) {
